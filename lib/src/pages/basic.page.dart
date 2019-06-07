@@ -7,7 +7,8 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
+        body: SingleChildScrollView(
+            child: Column(
       children: <Widget>[
         _buildImage(),
         _buildTitleIcon(),
@@ -19,41 +20,47 @@ class BasicPage extends StatelessWidget {
         _buildText(),
         _buildText(),
       ],
-    ));
+    )));
   }
 
   Image _buildImage() {
-    return Image(
-      image: NetworkImage(
-          'https://i0.wp.com/digital-photography-school.com/wp-content/' +
-              'uploads/2019/02/Landscapes-04-jeremy-flint.jpg?fit=1500%2C1000&ssl=1'),
+    return Container(
+      width: double.infinity,
+      child: Image(
+          image: NetworkImage(
+              'https://i0.wp.com/digital-photography-school.com/wp-content/' +
+                  'uploads/2019/02/Landscapes-04-jeremy-flint.jpg?fit=1500%2C1000&ssl=1'),
+          height: 180.0,
+          fit: BoxFit.cover),
     );
   }
 
   Widget _buildTitleIcon() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Image description',
-                  style: titleStyle,
-                ),
-                SizedBox(height: 7.0),
-                Text(
-                  'More detailed description',
-                  style: subtitleStyle,
-                )
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Image description',
+                    style: titleStyle,
+                  ),
+                  SizedBox(height: 7.0),
+                  Text(
+                    'More detailed description',
+                    style: subtitleStyle,
+                  )
+                ],
+              ),
             ),
-          ),
-          Icon(Icons.star, color: Colors.red, size: 30.0),
-          Text('41', style: TextStyle(fontSize: 20.0))
-        ],
+            Icon(Icons.star, color: Colors.red, size: 30.0),
+            Text('41', style: TextStyle(fontSize: 20.0))
+          ],
+        ),
       ),
     );
   }
@@ -92,8 +99,9 @@ class BasicPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
       child: Text(
-          'Ut adipisicing aliqua anim minim Lorem ex est do aliqua commodo veniam labore. Ipsum proident esse voluptate fugiat ea velit. Nostrud ex mollit ullamco ullamco ullamco. Ex enim culpa eiusmod aute. Consequat officia eiusmod in aliqua nostrud cupidatat commodo officia consectetur enim ad. Amet est aliqua labore Lorem nostrud.',
-          textAlign: TextAlign.justify,),
+        'Ut adipisicing aliqua anim minim Lorem ex est do aliqua commodo veniam labore. Ipsum proident esse voluptate fugiat ea velit. Nostrud ex mollit ullamco ullamco ullamco. Ex enim culpa eiusmod aute. Consequat officia eiusmod in aliqua nostrud cupidatat commodo officia consectetur enim ad. Amet est aliqua labore Lorem nostrud.',
+        textAlign: TextAlign.justify,
+      ),
     );
   }
 }
