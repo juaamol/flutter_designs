@@ -9,23 +9,34 @@ class BasicPage extends StatelessWidget {
     return Scaffold(
         body: Column(
       children: <Widget>[
-        Image(
-          image: NetworkImage(
-              'https://i0.wp.com/digital-photography-school.com/wp-content/' +
-                  'uploads/2019/02/Landscapes-04-jeremy-flint.jpg?fit=1500%2C1000&ssl=1'),
-        ),
-        _build()
+        _buildImage(),
+        _buildTitleIcon(),
+        _createActions(),
+        _buildText(),
+        _buildText(),
+        _buildText(),
+        _buildText(),
+        _buildText(),
+        _buildText(),
       ],
     ));
   }
 
-  Widget _build() {
+  Image _buildImage() {
+    return Image(
+      image: NetworkImage(
+          'https://i0.wp.com/digital-photography-school.com/wp-content/' +
+              'uploads/2019/02/Landscapes-04-jeremy-flint.jpg?fit=1500%2C1000&ssl=1'),
+    );
+  }
+
+  Widget _buildTitleIcon() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
       child: Row(
         children: <Widget>[
           Expanded(
-                      child: Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
@@ -44,6 +55,45 @@ class BasicPage extends StatelessWidget {
           Text('41', style: TextStyle(fontSize: 20.0))
         ],
       ),
-    ) ;
+    );
+  }
+
+  Widget _createActions() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _action(Icons.call, 'Call'),
+        _action(Icons.near_me, 'Near me'),
+        _action(Icons.share, 'Share')
+      ],
+    );
+  }
+
+  Widget _action(IconData icon, String text) {
+    return Column(
+      children: <Widget>[
+        Icon(
+          icon,
+          color: Colors.blue,
+          size: 40.0,
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          text,
+          style: TextStyle(fontSize: 15.0, color: Colors.blue),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildText() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+      child: Text(
+          'Ut adipisicing aliqua anim minim Lorem ex est do aliqua commodo veniam labore. Ipsum proident esse voluptate fugiat ea velit. Nostrud ex mollit ullamco ullamco ullamco. Ex enim culpa eiusmod aute. Consequat officia eiusmod in aliqua nostrud cupidatat commodo officia consectetur enim ad. Amet est aliqua labore Lorem nostrud.',
+          textAlign: TextAlign.justify,),
+    );
   }
 }
