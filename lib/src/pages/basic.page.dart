@@ -23,7 +23,7 @@ class BasicPage extends StatelessWidget {
     )));
   }
 
-  Image _buildImage() {
+  Widget _buildImage() {
     return Container(
       width: double.infinity,
       child: Image(
