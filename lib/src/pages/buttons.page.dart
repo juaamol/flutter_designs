@@ -7,7 +7,7 @@ class ButtonsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: <Widget>[_backgroundApp()],
+        children: <Widget>[_backgroundApp(), _title()],
       ),
     );
   }
@@ -50,6 +50,20 @@ class ButtonsPage extends StatelessWidget {
           top: -100.0,
         )
       ],
+    );
+  }
+
+  Widget _title() {
+    return Container(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('Classify transaction', style: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.bold)),
+          SizedBox(height: 10.0,),
+          Text('Classify this transaction into a category', style: TextStyle(color: Colors.white, fontSize: 18.0)),
+        ],
+      ),
     );
   }
 }
