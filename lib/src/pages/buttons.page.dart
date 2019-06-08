@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -108,45 +109,50 @@ class ButtonsPage extends StatelessWidget {
     return Table(
       children: [
         TableRow(children: [
-          _createRoundedButton(),
-          _createRoundedButton(),
+          _createRoundedButton(Colors.blue, Icons.border_all, 'Border all'),
+          _createRoundedButton(Colors.orange, Icons.call_end, 'Call end'),
         ]),
         TableRow(children: [
-          _createRoundedButton(),
-          _createRoundedButton(),
+          _createRoundedButton(Colors.pink, Icons.camera_rear, 'Camera rear'),
+          _createRoundedButton(Colors.purple, Icons.share, 'Share'),
         ]),
         TableRow(children: [
-          _createRoundedButton(),
-          _createRoundedButton(),
+          _createRoundedButton(Colors.red, Icons.shop, 'Shop'),
+          _createRoundedButton(Colors.green, Icons.cloud, 'Cloud'),
         ]),
         TableRow(children: [
-          _createRoundedButton(),
-          _createRoundedButton(),
+          _createRoundedButton(Colors.lime, Icons.code, 'Code'),
+          _createRoundedButton(Colors.teal, Icons.comment, 'Comment'),
         ])
       ],
     );
   }
 
-  Widget _createRoundedButton() {
-    return Container(
-      height: 180.0,
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(62, 66, 107, 0.7),
-        borderRadius: BorderRadius.circular(20.0)
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          SizedBox(height: 5.0),
-          CircleAvatar(
-            backgroundColor: Colors.pinkAccent,
-            radius: 35.0,
-            child: Icon(Icons.supervisor_account, color: Colors.white, size: 30.0,),
+  Widget _createRoundedButton(Color color, IconData icon, String text) {
+    return ClipRect(
+          child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: Container(
+          height: 180.0,
+          margin: EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(62, 66, 107, 0.7),
+            borderRadius: BorderRadius.circular(20.0)
           ),
-          Text('Supervisor account', style: TextStyle(color: Colors.pinkAccent),),
-          SizedBox(height: 5.0),
-        ],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              SizedBox(height: 5.0),
+              CircleAvatar(
+                backgroundColor: color,
+                radius: 35.0,
+                child: Icon(Icons.supervisor_account, color: Colors.white, size: 30.0,),
+              ),
+              Text(text, style: TextStyle(color: color),),
+              SizedBox(height: 5.0),
+            ],
+          ),
+        ),
       ),
     );
   }
